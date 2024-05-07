@@ -1,0 +1,77 @@
+Booking.com
+
+/backend/===============================================================================================
+
+    npm init
+    npm i express cors dotenv mongodb mongoose
+    npm i @types/cors @types/express @types/node ts-node typescript nodemon --save-dev
+
+    package.json
+    "scripts": {
+            "dev": "nodemon"
+    },
+
+    npm i bcryptjs jsonwebtoken
+    npm i @types/bcryptjs @types/jsonwebtoken --save-dev
+    npm i express-validator
+    npm i react-query
+    npm i cookie-parser @types/cookie-parser
+    npm i cross-env
+ /frontend/=============================================================================================
+
+    npm create vite@latest
+        -> React
+    
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss  init -p
+    npm i react-hook-form
+
+/mongo/ =================================================================================================
+
+    mongooes.connect(process.env.MONGODB_CONNECTION_STRING as string)
+
+create model
+import mongooes from 'mongoose';
+import bcrypt from 'bcryptjs';
+export type UserType = {
+    _id: string;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+};
+
+const userSchema = new mongooes.Schema({
+    email: { type: String, required: true, unique: true},
+    password: { type: String, required: true},
+    firstName: { type: String, required: true},
+    lastName: { type: String, required: true},
+});
+
+userSchema.pre("save", async function(next) {
+    if(this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 8);
+    }
+    next();
+})
+
+const User = mongooes.model<UserType>("User", userSchema);
+
+export default User;
+-----Using model------
+let user = await User.findOne({
+            email: req.body.email,
+});
+
+user = new User(req.body);
+await user.save();
+
+
+/e2e testing/-----------------------------------
+03:45min
+npm i cross-env
+"e2e": "cross-env DOTENV_CONFIG_PATH=.env.e2e nodemon"
+npm init playwright@latest
+
+Install vsc extension playwright of microsoft
+
