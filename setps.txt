@@ -17,6 +17,10 @@ Booking.com
     npm i react-query
     npm i cookie-parser @types/cookie-parser
     npm i cross-env
+
+    npm i cloudinary 
+    npm i multer
+    npm i @types/multer --save-dev
  /frontend/=============================================================================================
 
     npm create vite@latest
