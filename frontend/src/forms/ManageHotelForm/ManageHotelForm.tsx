@@ -31,9 +31,11 @@ type Props = {
 const ManageHotelForm = ({ onSave, isLoading, hotel}: Props) => {
     const formMethods = useForm<HotelFormData>();
     const { handleSubmit, reset } = formMethods;
+
     useEffect(() => {
         reset(hotel);
     }, [hotel, reset]);
+
     const onSubmit = handleSubmit((formDataJson: HotelFormData) => {
         const formData = new FormData();
         if (hotel) {

@@ -54,7 +54,7 @@ const ImagesSection = () => {
                         }
                     })} />
             </div>
-            {errors.imageFiles?.message && (
+            {errors.imageFiles && (
                 <span className="text-red-500">{errors.imageFiles.message}</span>
             )}
         </div>

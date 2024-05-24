@@ -30,6 +30,10 @@ Booking.com
     npx tailwindcss  init -p
     npm i react-hook-form
     npm i react-icons
+    npm i react-datepicker  
+        npm i --save-dev @types/react-datepicker
+        import "react-datepicker/dist/react-datepicker.css";
+    
 /mongo/ =================================================================================================
 
     mongooes.connect(process.env.MONGODB_CONNECTION_STRING as string)
